@@ -7,6 +7,7 @@
 //
 
 #import "SCTViewController.h"
+#import "Shortcut.h"
 
 @interface SCTViewController ()
 

@@ -8,22 +8,16 @@
 
 #import "Shortcut.h"
 #import "XQueryComponents.h"
-
-#define IS_IPAD (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-#define IS_IPHONE (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
-#define IS_RETINA ([[UIScreen mainScreen] scale] >= 2.0)
-
-#define SCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
-#define SCREEN_HEIGHT ([[UIScreen mainScreen] bounds].size.height)
-#define SCREEN_MAX_LENGTH (MAX(SCREEN_WIDTH, SCREEN_HEIGHT))
-#define SCREEN_MIN_LENGTH (MIN(SCREEN_WIDTH, SCREEN_HEIGHT))
-
-#define IS_IPHONE_4_OR_LESS (IS_IPHONE && SCREEN_MAX_LENGTH < 568.0)
-#define IS_IPHONE_5 (IS_IPHONE && SCREEN_MAX_LENGTH == 568.0)
-#define IS_IPHONE_6 (IS_IPHONE && SCREEN_MAX_LENGTH == 667.0)
-#define IS_IPHONE_6P (IS_IPHONE && SCREEN_MAX_LENGTH == 736.0)
+#import "DeviceMacros.h"
 
 @implementation Shortcut
+
++ (void)openStringURL:(NSString *)urlString {
+    NSURL *url = [NSURL URLWithString:urlString];
+    if ( url.scheme == nil ) {
+        
+    }
+}
 
 + (BOOL)nibExists:(NSString *)name {
     NSString *path = [[NSBundle mainBundle] pathForResource:name ofType:@"nib"];
@@ -43,14 +37,12 @@
     id viewController;
     if ( [Shortcut nibExists:vcString] ) {
         viewController = [[UIViewController alloc] initWithNibName:vcString bundle:nil];
-    } else {
+    }
+    else {
         //do the storyboard check
-        UIViewController *vc = [Shortcut viewControllerFromStoryBoardWithName:vcString];
-        if(vc)
-        {
-            return vc;
-        }//no storyboard make class!
-        else if( [Shortcut classExists:vcString] ) {
+        viewController = [Shortcut viewControllerFromStoryBoardWithName:vcString];
+
+       if( !viewController && [Shortcut classExists:vcString] ) {
             Class class = NSClassFromString(vcString);
             viewController = [[class alloc] init];
         }
@@ -59,7 +51,7 @@
     if ( [viewController conformsToProtocol:@protocol(ShortcutParams)] ) {
         [viewController setShortcutParams:params];
     }
-    return nil;
+    return viewController;
 }
 
 + (NSString *)viewControllerStringFromURL:(NSURL *)url {
@@ -75,8 +67,8 @@
     return [url queryComponents];
 }
 
-+ (UIStoryboard*)mainStoryBoard
-{
++ (UIStoryboard*)mainStoryBoard {
+    
     NSString *bundleRoot = [[[NSBundle mainBundle] bundlePath] stringByAppendingString:@"/Base.lproj"];
     NSFileManager *fm = [NSFileManager defaultManager];
     NSArray *dirContents = [fm contentsOfDirectoryAtPath:bundleRoot error:nil];
@@ -95,7 +87,6 @@
     }
     return nil;
 }
-
 
 + (UIViewController *)viewControllerFromStoryBoardWithName:(NSString*)name
 {
