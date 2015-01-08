@@ -64,6 +64,10 @@
     expect([Shortcut load:@"TestViewController2"]).toNot.beNil();
 }
 
+- (void)testGetStoryboardVC
+{
+    expect([Shortcut viewControllerFromStoryBoardWithName:@"testytaco123"]).toNot.beNil();
+}
 
 -(void)testGetStoryBoard
 {

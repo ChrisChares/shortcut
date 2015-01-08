@@ -42,10 +42,13 @@
     if ( [Shortcut nibExists:vcString] ) {
         return [[UIViewController alloc] initWithNibName:vcString bundle:nil];
     } else {
-        //do the storyboard
-        
-        //then
-        if ( [Shortcut classExists:vcString] ) {
+        //do the storyboard check
+        UIViewController *vc = [Shortcut viewControllerFromStoryBoardWithName:vcString];
+        if(vc)
+        {
+            return vc;
+        }//no storyboard make class!
+        else if( [Shortcut classExists:vcString] ) {
             Class class = NSClassFromString(vcString);
             return [[class alloc] initWithNibName:vcString bundle:nil];
         }
@@ -90,10 +93,19 @@
 }
 
 
-
 + (UIViewController *)viewControllerFromStoryBoardWithName:(NSString*)name
 {
-    return nil;
+    UIViewController *vc;
+    @try {
+        vc = [[Shortcut mainStoryBoard] instantiateViewControllerWithIdentifier:name];
+    }
+    @catch (NSException *exception) {
+        vc =  nil;
+    }
+    @finally {
+        return vc;
+    }
+    
 }
 
 @end
