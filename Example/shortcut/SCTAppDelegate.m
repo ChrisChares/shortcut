@@ -15,7 +15,7 @@
 {
     // Override point for customization after application launch.
     [Shortcut setupWithNavigationHandler:^(UIViewController *vc) {
-        [self.window.rootViewController presentViewController:vc animated:YES completion:NULL];
+        [(UINavigationController *)self.window.rootViewController pushViewController:vc animated:YES];
     }];
     return YES;
 }

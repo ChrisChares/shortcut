@@ -63,7 +63,11 @@ static NavigationHandler navHandler;
     
     id viewController;
     if ( [Shortcut nibExists:vcString] ) {
-        viewController = [[UIViewController alloc] initWithNibName:vcString bundle:nil];
+        Class class = NSClassFromString(vcString);
+        if ( class == nil ) {
+            class = NSClassFromString(@"UIViewController");
+        }
+        viewController = [[class alloc] initWithNibName:vcString bundle:nil];
     }
     else {
         //do the storyboard check
