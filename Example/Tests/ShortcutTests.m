@@ -10,6 +10,9 @@
 #define EXP_Shorthand
 #import <Expecta/Expecta.h>
 #import "Shortcut.h"
+#import "TestViewController2.h"
+#import "SCTViewController.h"
+
 
 @interface ShortcutTests : XCTestCase
 
@@ -36,15 +39,29 @@
 
 }
 
+- (void)testQueryParametersFromURL {
+    NSURL *url = [NSURL URLWithString:@"ViewController?a=1&b=2&c=3"];
+    NSDictionary *params = [Shortcut queryParametersFromURL:url];
+    expect(params[@"a"]).to.equal(@"1");
+    expect(params[@"b"]).to.equal(@"2");
+    expect(params[@"c"]).to.equal(@"3");
+}
+
 - (void)testNibExists {
     expect([Shortcut nibExists:@"TestViewController1"]).to.beTruthy();
     expect([Shortcut nibExists:@"huehuehuehue"]).to.beFalsy();
 }
 
+- (void)testClassExists {
+    expect([Shortcut classExists:@"TestViewController2"]).to.beTruthy();
+    expect([Shortcut classExists:@"huehuehuehue"]).to.beFalsy();
+    expect([Shortcut classExists:@"SCTAppDelegate"]).to.beFalsy();
+}
 
 - (void)testLoad {
     expect([Shortcut load:@"FakeViewController?id=123"]).to.beNil();
-//    expect([Shortcut load:@"TestViewController1"]).toNot.beNil();
+    expect([Shortcut load:@"TestViewController1"]).toNot.beNil();
+    expect([Shortcut load:@"TestViewController2"]).toNot.beNil();
 }
 
 
