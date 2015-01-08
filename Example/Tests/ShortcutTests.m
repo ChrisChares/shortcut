@@ -12,6 +12,7 @@
 #import "Shortcut.h"
 #import "TestViewController2.h"
 #import "SCTViewController.h"
+#import "NSBundle+AppURLScheme.h"
 
 
 @interface ShortcutTests : XCTestCase

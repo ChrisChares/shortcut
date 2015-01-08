@@ -7,14 +7,24 @@
 //
 
 #import "SCTAppDelegate.h"
+#import "Shortcut.h"
 
 @implementation SCTAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    [Shortcut setupWithNavigationHandler:^(UIViewController *vc) {
+        [self.window.rootViewController presentViewController:vc animated:YES completion:NULL];
+    }];
     return YES;
 }
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    // handler code here
+    return [Shortcut handleOpenURL:url];
+}
+
 							
 - (void)applicationWillResignActive:(UIApplication *)application
 {

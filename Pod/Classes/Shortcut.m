@@ -9,14 +9,41 @@
 #import "Shortcut.h"
 #import "XQueryComponents.h"
 #import "DeviceMacros.h"
+#import "NSBundle+AppURLScheme.h"
 
 @implementation Shortcut
+
+static NSString *appURLScheme;
+static NavigationHandler navHandler;
+
++ (void)setupWithNavigationHandler:(NavigationHandler)navigationHandler {
+    [Shortcut setup];
+    navHandler = navigationHandler;
+}
+
++ (void)setup {
+    appURLScheme = [[NSBundle mainBundle] appURLScheme];
+    if ( ! appURLScheme ) {
+        NSLog(@"Set up an app url scheme for this whole thing to work");
+        abort();
+    }
+}
+
++ (BOOL)handleOpenURL:(NSURL *)url {
+
+    UIViewController *vc = [self load:url.absoluteString];
+    navHandler(vc);
+    return YES;
+}
+
 
 + (void)openStringURL:(NSString *)urlString {
     NSURL *url = [NSURL URLWithString:urlString];
     if ( url.scheme == nil ) {
-        
+        urlString = [NSString stringWithFormat:@"%@://%@", appURLScheme, urlString];
+        url = [NSURL URLWithString:urlString];
     }
+    [[UIApplication sharedApplication] openURL:url];
 }
 
 + (BOOL)nibExists:(NSString *)name {

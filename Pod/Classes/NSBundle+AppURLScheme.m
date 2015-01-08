@@ -11,9 +11,8 @@
 @implementation NSBundle (AppURLScheme)
 
 - (NSString *)appURLScheme {
-    NSDictionary *plist = [[NSBundle mainBundle] infoDictionary];
-    return nil;
-//    plist[@"CFBundleURLTypes"][0][@"CFBundleURLSchemes"];
+    NSDictionary *plist = [self infoDictionary];
+    return [[plist[@"CFBundleURLTypes"] firstObject][@"CFBundleURLSchemes"] firstObject];
 }
 
 @end
