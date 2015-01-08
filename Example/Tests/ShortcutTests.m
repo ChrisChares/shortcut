@@ -28,7 +28,12 @@
 }
 
 - (void)testVCStringFromURL {
+    NSURL *url1 = [NSURL URLWithString:@"app://ViewController?hue=yes"];
+    NSURL *url2 = [NSURL URLWithString:@"ViewController?hue=yes"];
     
+    expect([Shortcut viewControllerStringFromURL:url1]).to.equal(@"ViewController");
+    expect([Shortcut viewControllerStringFromURL:url2]).to.equal(@"ViewController");
+
 }
 
 - (void)testNibExists {

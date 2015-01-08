@@ -22,7 +22,12 @@
 }
 
 + (NSString *)viewControllerStringFromURL:(NSURL *)url {
-    return [url pathComponents][0];
+    NSArray *pathComponents = [url pathComponents];
+    if ( pathComponents.count > 0 ) {
+        return pathComponents[0];
+    } else {
+        return [url host];
+    }
 }
 
 @end
