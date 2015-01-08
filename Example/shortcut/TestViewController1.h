@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Shortcut.h"
 
-@interface TestViewController2 : UIViewController <ShortcutParams>
+@interface TestViewController1 : UIViewController <ShortcutParams>
 
 - (void)setShortcutParams:(NSDictionary *)params;
 

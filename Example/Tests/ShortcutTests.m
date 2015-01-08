@@ -10,7 +10,7 @@
 #define EXP_Shorthand
 #import <Expecta/Expecta.h>
 #import "Shortcut.h"
-#import "TestViewController2.h"
+#import "TestViewController1.h"
 #import "SCTViewController.h"
 #import "NSBundle+AppURLScheme.h"
 
@@ -54,7 +54,7 @@
 }
 
 - (void)testClassExists {
-    expect([Shortcut classExists:@"TestViewController2"]).to.beTruthy();
+    expect([Shortcut classExists:@"TestViewController1"]).to.beTruthy();
     expect([Shortcut classExists:@"huehuehuehue"]).to.beFalsy();
     expect([Shortcut classExists:@"SCTAppDelegate"]).to.beFalsy();
 }
@@ -62,7 +62,6 @@
 - (void)testLoad {
     expect([Shortcut load:@"FakeViewController?id=123"]).to.beNil();
     expect([Shortcut load:@"TestViewController1"]).toNot.beNil();
-    expect([Shortcut load:@"TestViewController2"]).toNot.beNil();
     expect([Shortcut load:@"testytaco123"]).toNot.beNil();
 }
 

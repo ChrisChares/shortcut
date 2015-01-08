@@ -28,7 +28,7 @@
 }
 
 - (IBAction)goToNextVC:(id)sender {
-    UIViewController *vc = [Shortcut load:@"testytaco123"];
+    UIViewController *vc = [Shortcut load:@"/TestViewController1/?param1=Value1&param2=Value2"];
     
     [self.navigationController pushViewController:vc animated:YES];
 }

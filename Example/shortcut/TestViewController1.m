@@ -6,15 +6,15 @@
 //  Copyright (c) 2015 Chris Chares. All rights reserved.
 //
 
-#import "TestViewController2.h"
+#import "TestViewController1.h"
 
-@interface TestViewController2 ()
+@interface TestViewController1 ()
 {
-    NSArray *passedValue;
+    NSDictionary *inputParams;
 }
 @end
 
-@implementation TestViewController2
+@implementation TestViewController1
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -25,7 +25,7 @@
 {
     [super viewDidAppear:animated];
     
-    
+    [self.textField setText:[inputParams description]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -35,7 +35,7 @@
 
 - (void)setShortcutParams:(NSDictionary *)params
 {
-    passedValue = [params valueForKey:@"exampleParam"];
+    inputParams = params;
 }
 
 /*

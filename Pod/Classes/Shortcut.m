@@ -30,7 +30,6 @@ static NavigationHandler navHandler;
 }
 
 + (BOOL)handleOpenURL:(NSURL *)url {
-
     UIViewController *vc = [self load:url.absoluteString];
     navHandler(vc);
     return YES;
