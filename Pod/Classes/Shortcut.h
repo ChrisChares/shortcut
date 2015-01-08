@@ -13,6 +13,9 @@
 +(UIViewController *)load:(NSString *)url;
 
 +(BOOL)nibExists:(NSString *)name;
++(BOOL)classExists:(NSString *)name;
 
 +(NSString *)viewControllerStringFromURL:(NSURL *)url;
++(NSDictionary *)queryParametersFromURL:(NSURL *)url;
+
 @end
