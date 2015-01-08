@@ -20,5 +20,6 @@
 +(NSDictionary *)queryParametersFromURL:(NSURL *)url;
 
 + (UIStoryboard*)mainStoryBoard;
++ (UIViewController *)viewControllerFromStoryBoardWithName:(NSString*)name;
 
 @end
