@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Shortcut.h"
 
-@interface TestViewController2 : UIViewController
+@interface TestViewController2 : UIViewController <>
 
 @end

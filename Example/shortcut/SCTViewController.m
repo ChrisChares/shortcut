@@ -26,4 +26,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)goToNextVC:(id)sender {
+    
+}
 @end

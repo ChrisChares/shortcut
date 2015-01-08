@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface SCTViewController : UIViewController
+- (IBAction)goToNextVC:(id)sender;
 
 @end
