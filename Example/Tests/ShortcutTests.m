@@ -27,6 +27,10 @@
     [super tearDown];
 }
 
+- (void)testVCStringFromURL {
+    
+}
+
 - (void)testNibExists {
     expect([Shortcut nibExists:@"TestViewController1"]).to.beTruthy();
     expect([Shortcut nibExists:@"huehuehuehue"]).to.beFalsy();
@@ -34,7 +38,7 @@
 
 
 - (void)testLoad {
-    expect([Shortcut load:@"huehuehue"]).to.beNil();
+    expect([Shortcut load:@"FakeViewController?id=123"]).to.beNil();
 //    expect([Shortcut load:@"TestViewController1"]).toNot.beNil();
 }
 
@@ -42,9 +46,9 @@
 
 - (void)testPerformanceExample {
     // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
-    }];
+//    [self measureBlock:^{
+//        // Put the code you want to measure the time of here.
+//    }];
 }
 
 @end

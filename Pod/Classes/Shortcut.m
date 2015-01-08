@@ -16,9 +16,13 @@
 }
 
 
-+ (UIViewController *)load:(NSString *)url
-{
++ (UIViewController *)load:(NSString *)urlString {
+    NSURL *url = [NSURL URLWithString:urlString];
     return nil;
+}
+
++ (NSString *)viewControllerStringFromURL:(NSURL *)url {
+    return [url pathComponents][0];
 }
 
 @end

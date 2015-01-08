@@ -10,8 +10,9 @@
 
 @interface Shortcut : NSObject
 
-+ (UIViewController *)load:(NSString *)url;
++(UIViewController *)load:(NSString *)url;
 
-+ (BOOL)nibExists:(NSString *)name;
++(BOOL)nibExists:(NSString *)name;
 
++(NSString *)viewControllerStringFromURL:(NSURL *)url;
 @end
