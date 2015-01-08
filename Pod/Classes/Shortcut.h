@@ -7,8 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ShortcutParams.h"
+
+#define openURL(x) [[UIApplication sharedApplication] openURL:x]
 
 @interface Shortcut : NSObject
+
++(void)openStringURL:(NSString *)url;
 
 +(UIViewController *)load:(NSString *)url;
 

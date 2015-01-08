@@ -62,6 +62,7 @@
     expect([Shortcut load:@"FakeViewController?id=123"]).to.beNil();
     expect([Shortcut load:@"TestViewController1"]).toNot.beNil();
     expect([Shortcut load:@"TestViewController2"]).toNot.beNil();
+    expect([Shortcut load:@"testytaco123"]).toNot.beNil();
 }
 
 - (void)testGetStoryboardVC
