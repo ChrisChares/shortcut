@@ -18,4 +18,6 @@
 +(NSString *)viewControllerStringFromURL:(NSURL *)url;
 +(NSDictionary *)queryParametersFromURL:(NSURL *)url;
 
++ (UIStoryboard*)mainStoryBoard;
+
 @end

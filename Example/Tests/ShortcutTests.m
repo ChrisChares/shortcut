@@ -65,6 +65,10 @@
 }
 
 
+-(void)testGetStoryBoard
+{
+    expect([Shortcut mainStoryBoard]).to.beTruthy();
+}
 
 - (void)testPerformanceExample {
     // This is an example of a performance test case.
