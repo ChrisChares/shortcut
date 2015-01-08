@@ -15,4 +15,7 @@
 +(BOOL)nibExists:(NSString *)name;
 
 +(NSString *)viewControllerStringFromURL:(NSURL *)url;
+
++ (UIStoryboard*)mainStoryBoard;
+
 @end
