@@ -38,20 +38,24 @@
 + (UIViewController *)load:(NSString *)urlString {
     NSURL *url = [NSURL URLWithString:urlString];
     NSString *vcString = [Shortcut viewControllerStringFromURL:url];
+    NSDictionary *params = [Shortcut queryParametersFromURL:url];
     
+    id viewController;
     if ( [Shortcut nibExists:vcString] ) {
-        return [[UIViewController alloc] initWithNibName:vcString bundle:nil];
+        viewController = [[UIViewController alloc] initWithNibName:vcString bundle:nil];
     } else {
         //do the storyboard
         
         //then
         if ( [Shortcut classExists:vcString] ) {
             Class class = NSClassFromString(vcString);
-            return [[class alloc] initWithNibName:vcString bundle:nil];
+            viewController = [[class alloc] init];
         }
     }
     
-    
+    if ( [viewController conformsToProtocol:@protocol(ShortcutParams)] ) {
+        [viewController setShortcutParams:params];
+    }
     return nil;
 }
 

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ShortcutParams.h"
 
 @interface Shortcut : NSObject
 
