@@ -11,6 +11,6 @@
 @protocol ShortcutParams <NSObject>
 
 @required
-- (id)setShortcutParams:(NSDictionary *)params;
+- (void)setShortcutParams:(NSDictionary *)params;
 
 @end

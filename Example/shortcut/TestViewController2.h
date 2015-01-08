@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "Shortcut.h"
 
-@interface TestViewController2 : UIViewController <>
+@interface TestViewController2 : UIViewController <ShortcutParams>
+
+- (void)setShortcutParams:(NSDictionary *)params;
+
+@property (weak, nonatomic) IBOutlet UITextView *textField;
 
 @end

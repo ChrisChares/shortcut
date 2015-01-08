@@ -9,7 +9,9 @@
 #import "TestViewController2.h"
 
 @interface TestViewController2 ()
-
+{
+    NSArray *passedValue;
+}
 @end
 
 @implementation TestViewController2
@@ -19,13 +21,21 @@
     // Do any additional setup after loading the view.
 }
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-- (void)viewDidLoad {
-    
+- (void)setShortcutParams:(NSDictionary *)params
+{
+    passedValue = [params valueForKey:@"exampleParam"];
 }
 
 /*

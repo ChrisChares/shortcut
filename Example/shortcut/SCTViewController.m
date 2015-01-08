@@ -28,6 +28,8 @@
 }
 
 - (IBAction)goToNextVC:(id)sender {
+    UIViewController *vc = [Shortcut load:@"testytaco123"];
     
+    [self.navigationController pushViewController:vc animated:YES];
 }
 @end

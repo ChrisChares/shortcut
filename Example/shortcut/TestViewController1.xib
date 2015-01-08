@@ -7,7 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TestViewController2">
             <connections>
-                <outlet property="view" destination="iN0-l3-epB" id="Amd-d8-96u"/>
+                <outlet property="view" destination="iN0-l3-epB" id="xol-xd-tJB"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
