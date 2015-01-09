@@ -9,14 +9,42 @@ Shortcut is an attempt to bring URL-based routing to iOS in the least obtrusive 
 
 Let's look at some examples.  
 
-    //create and present PropertyViewController using the default behavior
+    //Create and present PropertyViewController using the default behavior.
+    //View controllers can adopt the ShortcutParams protocol to receive
+    //query params as a NSDictionary
     openURL(@"PropertyViewController?id=wka92j9a8s);
     
-    //open this URL from outside the app for the same behavior
+    //Open this URL from outside the app for the same behavior
     appScheme://PropertyViewController?id=wka92j9a8s
     
-    //load the same view controller without presenting it
+    //Load the same view controller without presenting it.
+    //This works with view controllers defined in .xib files, pure code and the the main 
+    //storyboard for the current device
     UIViewController *vc = [Shortcut load:@"PropertyViewController?id=wka92j9a8s];
+    
+## Getting Started
+
+To run the example project, clone the repo, and run `pod install` from the Example directory first.
+
+To use Shortcut in your own project, first install it via [CocoaPods](http://cocoapods.org)
+
+    pod "shortcut"
+
+Then add a custom URL scheme to your app plist. [It's not hard](http://www.idev101.com/code/Objective-C/custom_url_schemes.html)
+
+Finally implement `handleOpenUrl:` in your App Delegate
+
+    - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    return [Shortcut handleOpenURL:url
+                 navigationHandler:^(UIViewController *vc) {
+                     //present the view controller in a manner appropriate for your app
+                     [(UINavigationController *)self.window.rootViewController pushViewController:vc
+                                                                                animated:YES];
+                 }
+            ];
+    }
+    
+Now you can start 
     
 ## How does it work?
 
@@ -34,10 +62,6 @@ Once it has found your view controller it uses the standard iOS URL opening beha
     //with a little convenience on top so that you don't have to include your app scheme
     //when calling local URLs
 
-
-## Usage
-
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
 ## Requirements
 
