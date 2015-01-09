@@ -31,8 +31,8 @@ Once it has found your view controller it uses the standard iOS URL opening beha
     openURL(url);
     //is really wrapping
     [UIApplication sharedApplication] openURL:url];
-    //with a little convenience on top so that you don't have to include your app scheme 
-    //within your own app  
+    //with a little convenience on top so that you don't have to include your app scheme
+    //when calling local URLs
 
 
 ## Usage
