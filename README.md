@@ -5,18 +5,18 @@
 [![License](https://img.shields.io/cocoapods/l/shortcut.svg?style=flat)](http://cocoadocs.org/docsets/shortcut)
 [![Platform](https://img.shields.io/cocoapods/p/shortcut.svg?style=flat)](http://cocoadocs.org/docsets/shortcut)
 
-Shortcut is an attempt to bring URL-based view controller routing to iOS in the least painful way possible. It allows you to instantiate and present view controllers via URL **without manually configuring routing** and from **outside the app (deep links)**
+Shortcut is an attempt to bring URL-based routing to iOS in the least painful way possible. It allows you to instantiate and present view controllers via URL **without configuring routing** and from **outside the app (deep link)**
 
 Let's look at some examples.  
 
-    //create and present PropertyViewController using the default behavior (modal off root view controller)
-    loadURL(@"PropertyViewController?id=wka92j9a8s);
-    
-    //load the same view controller without presenting it
-    UIViewController *vc = [Shortcut load:@"PropertyViewController?id=wka92j9a8s];
+    //create and present PropertyViewController using the default behavior
+    openURL(@"PropertyViewController?id=wka92j9a8s);
     
     //open this URL from outside the app for the same behavior
     appScheme://PropertyViewController?id=wka92j9a8s
+    
+    //load the same view controller without presenting it
+    UIViewController *vc = [Shortcut load:@"PropertyViewController?id=wka92j9a8s];
     
 ## How does it work?
 
@@ -25,6 +25,14 @@ By inspecting your bundle.  It searches for the named view controller in this or
 + For a nib with matching name
 + In the main storyboard for a matching identifier
 + For a class with matching name
+
+Once it has found your view controller it uses the standard iOS URL opening behavior.  In fact:
+
+    openURL(url);
+    //is really wrapping
+    [UIApplication sharedApplication] openURL:url];
+    //with a little convenience on top so that you don't have to include your app scheme 
+    //within your own app  
 
 
 ## Usage
