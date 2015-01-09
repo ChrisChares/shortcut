@@ -10,13 +10,14 @@
 #import "ShortcutParams.h"
 
 #define openURL(x) [Shortcut openStringURL:x]
+
 typedef void(^NavigationHandler)(UIViewController *);
+
 @interface Shortcut : NSObject
 
-+ (void)setupWithNavigationHandler:(NavigationHandler)navigationHandler;
 
 + (void)openStringURL:(NSString *)url;
-+ (BOOL)handleOpenURL:(NSURL *)url;
++ (BOOL)handleOpenURL:(NSURL *)url navigationHandler:(NavigationHandler)navHandler;
 
 + (UIViewController *)load:(NSString *)url;
 

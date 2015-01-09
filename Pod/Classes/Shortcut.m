@@ -14,22 +14,18 @@
 @implementation Shortcut
 
 static NSString *appURLScheme;
-static NavigationHandler navHandler;
 
-+ (void)setupWithNavigationHandler:(NavigationHandler)navigationHandler {
-    [Shortcut setup];
-    navHandler = navigationHandler;
-}
-
-+ (void)setup {
-    appURLScheme = [[NSBundle mainBundle] appURLScheme];
-    if ( ! appURLScheme ) {
-        NSLog(@"Set up an app url scheme for this whole thing to work");
-        abort();
++ (void)initialize {
+    if (self == [Shortcut class]) {
+        appURLScheme = [[NSBundle mainBundle] appURLScheme];
+        if ( ! appURLScheme ) {
+            NSLog(@"Set up an app url scheme for this whole thing to work");
+            abort();
+        }
     }
 }
 
-+ (BOOL)handleOpenURL:(NSURL *)url {
++ (BOOL)handleOpenURL:(NSURL *)url navigationHandler:(NavigationHandler)navHandler {
     UIViewController *vc = [self load:url.absoluteString];
     navHandler(vc);
     return YES;

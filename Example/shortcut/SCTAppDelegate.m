@@ -11,18 +11,18 @@
 
 @implementation SCTAppDelegate
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
     // Override point for customization after application launch.
-    [Shortcut setupWithNavigationHandler:^(UIViewController *vc) {
-        [(UINavigationController *)self.window.rootViewController pushViewController:vc animated:YES];
-    }];
     return YES;
 }
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
-    // handler code here
-    return [Shortcut handleOpenURL:url];
+    return [Shortcut handleOpenURL:url
+                 navigationHandler:^(UIViewController *vc) {
+                     [(UINavigationController *)self.window.rootViewController pushViewController:vc
+                                                                                animated:YES];
+                 }
+            ];
 }
 
 							
