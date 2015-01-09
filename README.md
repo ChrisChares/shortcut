@@ -5,6 +5,17 @@
 [![License](https://img.shields.io/cocoapods/l/shortcut.svg?style=flat)](http://cocoadocs.org/docsets/shortcut)
 [![Platform](https://img.shields.io/cocoapods/p/shortcut.svg?style=flat)](http://cocoadocs.org/docsets/shortcut)
 
+Shortcut is an attempt to bring URL-based view controller routing to iOS in the least painful way possible. It allows you to instantiate and present view controllers via URL _without manually setting up routing_ and _from outside the app (deep linking)_
+
+Let's look at some examples.  
+
+    //create and present PropertyViewController using the default behavior (modal off root view controller)
+    loadURL(@"PropertyViewController?id=wka92j9a8s);
+    
+    //load the same view controller without presenting
+    UIViewController *vc = [Shortcut load:@"PropertyViewController?id=wka92j9a8s];
+
+
 ## Usage
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
@@ -13,14 +24,16 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Installation
 
-shortcut is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+~~shortcut is available through [CocoaPods](http://cocoapods.org). To install
+it, simply add the following line to your Podfile:~~
+Not yet, but soon:
 
     pod "shortcut"
 
-## Author
+## Authors
 
-Chris Chares, chris@eunoia.cc
++ the_meatloaf
++ chrischares
 
 ## License
 
