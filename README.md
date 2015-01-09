@@ -90,7 +90,7 @@ Not yet, but soon:
 
 ## Authors
 
-+ [the_meatloaf](https://github.com/the_meatloaf)
++ [themeatloaf](https://github.com/themeatloaf)
 + [chrischares](https://github.com/ChrisChares)
 
 ## License
