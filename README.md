@@ -44,7 +44,12 @@ Finally implement `handleOpenUrl:` in your App Delegate
             ];
     }
     
-Now you can start 
+Now you can start using `openURL()` and `[Shortcut load:]`
+
+If you have view controllers you would not like Shortcut to instantiate, add them to the blacklist
+
+    [Shortcut setBlackList:@[@"PrivateViewController"]];
+
     
 ## How does it work?
 
@@ -63,7 +68,16 @@ Once it has found your view controller it uses the standard iOS URL opening beha
     //when calling local URLs
 
 
-## Requirements
+## Contributing
+
+Some key needs:
+
++ Tests
++ Documentation
++ Caching (decision trees and storyboards?)
++ Less expensive way to check storyboard for identifier
++ Typed parameters ( NSNumber to start )
++ Benchmarks
 
 ## Installation
 
