@@ -12,7 +12,6 @@
 
 @implementation SCTUtilities
 
-
 + (BOOL)nibExists:(NSString *)name {
     NSString *path = [[NSBundle mainBundle] pathForResource:name ofType:@"nib"];
     return path != nil;
@@ -37,10 +36,8 @@
 }
 
 + (UIStoryboard*)mainStoryBoard {
-    
     NSString *bundleRoot = [[[NSBundle mainBundle] bundlePath] stringByAppendingString:@"/Base.lproj"];
-    NSFileManager *fm = [NSFileManager defaultManager];
-    NSArray *dirContents = [fm contentsOfDirectoryAtPath:bundleRoot error:nil];
+    NSArray *dirContents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:bundleRoot error:nil];
     NSString *match;
     if(IS_IPAD)
         match = @"*iPad.storyboardc";
@@ -48,17 +45,17 @@
         match = @"*iPhone.storyboardc";
     NSPredicate *fltr = [NSPredicate predicateWithFormat:@"SELF like[cd] %@",match];
     NSArray *onlyStoryBoard = [dirContents filteredArrayUsingPredicate:fltr];
-    if (onlyStoryBoard.count==1) {
+    if ( onlyStoryBoard.count == 1 ) {
         NSString *name = [onlyStoryBoard firstObject];
         NSRange range= [name rangeOfString: @".storyboardc" options: NSBackwardsSearch];
         NSString *finalName= [name substringToIndex: range.location];
         return [UIStoryboard storyboardWithName:finalName bundle:[NSBundle mainBundle]];
+    } else {
+        return nil;
     }
-    return nil;
 }
 
-+ (UIViewController *)viewControllerFromStoryBoardWithName:(NSString*)name
-{
++ (UIViewController *)viewControllerFromStoryBoardWithName:(NSString*)name {
     UIViewController *vc;
     @try {
         vc = [[SCTUtilities mainStoryBoard] instantiateViewControllerWithIdentifier:name];
@@ -69,9 +66,6 @@
     @finally {
         return vc;
     }
-    
 }
-
-
 
 @end
