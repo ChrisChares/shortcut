@@ -14,6 +14,17 @@ Let's look at some examples.
     
     //load the same view controller without presenting it
     UIViewController *vc = [Shortcut load:@"PropertyViewController?id=wka92j9a8s];
+    
+    //open this URL from outside the app for the same behavior
+    appScheme://PropertyViewController?id=wka92j9a8s
+    
+## How does it work?
+
+By inspecting your bundle.  It searches for the named view controller in this order:
+
++ For a nib with matching name
++ In the main storyboard for a matching identifier
++ For a class with matching name
 
 
 ## Usage
