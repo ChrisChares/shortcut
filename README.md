@@ -46,7 +46,7 @@ Finally implement `handleOpenUrl:` in your App Delegate
     
 Now you can start using `openURL()` and `[Shortcut load:]`
 
-If you have view controllers you would not like Shortcut to instantiate, add them to the blacklist
+If you have view controllers you would not like Shortcut to instantiate, create a blacklist
 
     [Shortcut setBlackList:@[@"PrivateViewController"]];
 
