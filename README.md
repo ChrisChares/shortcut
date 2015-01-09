@@ -55,9 +55,9 @@ If you have view controllers you would not like Shortcut to instantiate, create 
 
 By inspecting your bundle.  It searches for the named view controller in this order:
 
-+ For a nib with matching name
-+ In the main storyboard for a matching identifier
-+ For a class with matching name
++ xib/nib names
++ main storyboard identifiers
++ class names
 
 Once it has found your view controller it uses the standard iOS URL opening behavior.  In fact:
 
@@ -90,8 +90,8 @@ Not yet, but soon:
 
 ## Authors
 
-+ the_meatloaf
-+ chrischares
++ [the_meatloaf](https://github.com/the_meatloaf)
++ [chrischares](https://github.com/ChrisChares)
 
 ## License
 
