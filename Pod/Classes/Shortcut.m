@@ -25,7 +25,7 @@ static NSString *appURLScheme;
     }
 }
 
-+ (BOOL)handleOpenURL:(NSURL *)url navigationHandler:(NavigationHandler)navHandler {
++ (BOOL)handleOpenURL:(NSURL *)url navigationHandler:(ShortcutNavigationHandler)navHandler {
     UIViewController *vc = [self load:url.absoluteString];
     navHandler(vc);
     return YES;

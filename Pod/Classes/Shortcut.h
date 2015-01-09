@@ -11,13 +11,12 @@
 
 #define openURL(x) [Shortcut openStringURL:x]
 
-typedef void(^NavigationHandler)(UIViewController *);
+typedef void(^ShortcutNavigationHandler)(UIViewController *);
 
 @interface Shortcut : NSObject
 
-
 + (void)openStringURL:(NSString *)url;
-+ (BOOL)handleOpenURL:(NSURL *)url navigationHandler:(NavigationHandler)navHandler;
++ (BOOL)handleOpenURL:(NSURL *)url navigationHandler:(ShortcutNavigationHandler)navHandler;
 
 + (UIViewController *)load:(NSString *)url;
 
