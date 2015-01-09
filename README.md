@@ -18,8 +18,8 @@ Let's look at some examples.
     appScheme://PropertyViewController?id=wka92j9a8s
     
     //Load the same view controller without presenting it.
-    //These methods work with view controllers defined in .xib files and pure code as well as the the main 
-    //storyboard for the current device
+    //These methods work with view controllers defined in .xib files and pure code as 
+    //well as the the main storyboard for the current device type
     UIViewController *vc = [Shortcut load:@"PropertyViewController?id=wka92j9a8s];
     
 ## Getting Started
