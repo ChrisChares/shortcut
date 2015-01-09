@@ -77,6 +77,7 @@ Some key needs:
 + Caching (decision trees and storyboards?)
 + Less expensive way to check storyboard for identifier
 + Typed parameters ( NSNumber to start )
++ Black list pattern matching
 + Benchmarks
 
 ## Installation
