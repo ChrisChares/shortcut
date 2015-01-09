@@ -5,7 +5,7 @@
 [![License](https://img.shields.io/cocoapods/l/shortcut.svg?style=flat)](http://cocoadocs.org/docsets/shortcut)
 [![Platform](https://img.shields.io/cocoapods/p/shortcut.svg?style=flat)](http://cocoadocs.org/docsets/shortcut)
 
-Shortcut is an attempt to bring URL-based routing to iOS in the least painful way possible. It allows you to instantiate and present view controllers via URL **without configuring routing** and from **outside the app (deep link)**
+Shortcut is an attempt to bring URL-based routing to iOS in the least obtrusive way possible. It allows you to instantiate and present view controllers via string URLs **without configuring routing** and from **outside the app (deep link)**
 
 Let's look at some examples.  
 
