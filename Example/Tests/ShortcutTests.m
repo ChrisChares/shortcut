@@ -35,4 +35,11 @@
     expect([Shortcut load:@"testytaco123"]).toNot.beNil();
 }
 
+- (void)testBlackList {
+    [Shortcut setBlackList:@[
+                             @"PrivateViewController"
+                             ]];
+    expect([Shortcut passesBlackList:@"PrivateViewController"]).to.equal(NO);
+}
+
 @end

@@ -13,6 +13,9 @@
 
 @implementation Shortcut
 
+static NSArray *greyList;
+static NSArray *blackList;
+
 static NSString *appURLScheme;
 
 + (void)initialize {
@@ -26,9 +29,15 @@ static NSString *appURLScheme;
 }
 
 + (BOOL)handleOpenURL:(NSURL *)url navigationHandler:(ShortcutNavigationHandler)navHandler {
-    UIViewController *vc = [self load:url.absoluteString];
-    navHandler(vc);
-    return YES;
+    NSString *viewControllerString = [SCTUtilities viewControllerStringFromURL:url];
+    if ( [Shortcut passesBlackList:viewControllerString] ) {
+        UIViewController *vc = [self load:url.absoluteString];
+        navHandler(vc);
+        return YES;
+    } else {
+        NSLog(@"Can't open ");
+        return NO;
+    }
 }
 
 
@@ -71,5 +80,12 @@ static NSString *appURLScheme;
     return viewController;
 }
 
++ (BOOL)passesBlackList:(NSString *)value {
+    return ! [blackList containsObject:value];
+}
+
++ (void)setBlackList:(NSArray *)list {
+    blackList = list;
+}
 
 @end

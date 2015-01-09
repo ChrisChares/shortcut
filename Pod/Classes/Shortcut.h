@@ -17,10 +17,11 @@ typedef void(^ShortcutNavigationHandler)(UIViewController *);
 
 + (void)openStringURL:(NSString *)url;
 + (BOOL)handleOpenURL:(NSURL *)url navigationHandler:(ShortcutNavigationHandler)navHandler;
-
 + (UIViewController *)load:(NSString *)url;
 
-
+//Black list items cannot be opened by Shortcut
++ (void)setBlackList:(NSArray *)list;
++ (BOOL)passesBlackList:(NSString *)value;
 
 
 @end
