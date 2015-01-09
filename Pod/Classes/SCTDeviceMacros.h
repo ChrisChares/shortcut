@@ -1,12 +1,5 @@
-//
-//  DeviceMacros.h
-//  Pods
-//
-//  Created by Chris Chares on 1/8/15.
-//
-//
-
 #ifndef Pods_DeviceMacros_h
+
 #define Pods_DeviceMacros_h
 
 #define IS_IPAD (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)

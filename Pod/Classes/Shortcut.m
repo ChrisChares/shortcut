@@ -8,8 +8,8 @@
 
 #import "Shortcut.h"
 #import "XQueryComponents.h"
-#import "DeviceMacros.h"
 #import "NSBundle+AppURLScheme.h"
+#import "SCTUtilities.h"
 
 @implementation Shortcut
 
@@ -41,23 +41,14 @@ static NSString *appURLScheme;
     [[UIApplication sharedApplication] openURL:url];
 }
 
-+ (BOOL)nibExists:(NSString *)name {
-    NSString *path = [[NSBundle mainBundle] pathForResource:name ofType:@"nib"];
-    return path != nil;
-}
-
-+ (BOOL)classExists:(NSString *)name {
-    Class class = NSClassFromString(name);
-    return class && [class isSubclassOfClass:[UIViewController class]];
-}
 
 + (UIViewController *)load:(NSString *)urlString {
     NSURL *url = [NSURL URLWithString:urlString];
-    NSString *vcString = [Shortcut viewControllerStringFromURL:url];
-    NSDictionary *params = [Shortcut queryParametersFromURL:url];
+    NSString *vcString = [SCTUtilities viewControllerStringFromURL:url];
+    NSDictionary *params = [SCTUtilities queryParametersFromURL:url];
     
     id viewController;
-    if ( [Shortcut nibExists:vcString] ) {
+    if ( [SCTUtilities nibExists:vcString] ) {
         Class class = NSClassFromString(vcString);
         if ( class == nil ) {
             class = NSClassFromString(@"UIViewController");
@@ -66,9 +57,9 @@ static NSString *appURLScheme;
     }
     else {
         //do the storyboard check
-        viewController = [Shortcut viewControllerFromStoryBoardWithName:vcString];
-
-       if( !viewController && [Shortcut classExists:vcString] ) {
+        viewController = [SCTUtilities viewControllerFromStoryBoardWithName:vcString];
+        
+        if( !viewController && [SCTUtilities classExists:vcString] ) {
             Class class = NSClassFromString(vcString);
             viewController = [[class alloc] init];
         }
@@ -80,53 +71,5 @@ static NSString *appURLScheme;
     return viewController;
 }
 
-+ (NSString *)viewControllerStringFromURL:(NSURL *)url {
-    NSArray *pathComponents = [url pathComponents];
-    if ( pathComponents.count > 0 ) {
-        return pathComponents[0];
-    } else {
-        return [url host];
-    }
-}
-
-+ (NSDictionary *)queryParametersFromURL:(NSURL *)url {
-    return [url queryComponents];
-}
-
-+ (UIStoryboard*)mainStoryBoard {
-    
-    NSString *bundleRoot = [[[NSBundle mainBundle] bundlePath] stringByAppendingString:@"/Base.lproj"];
-    NSFileManager *fm = [NSFileManager defaultManager];
-    NSArray *dirContents = [fm contentsOfDirectoryAtPath:bundleRoot error:nil];
-    NSString *match;
-    if(IS_IPAD)
-        match = @"*iPad.storyboardc";
-    else
-        match = @"*iPhone.storyboardc";
-    NSPredicate *fltr = [NSPredicate predicateWithFormat:@"SELF like[cd] %@",match];
-    NSArray *onlyStoryBoard = [dirContents filteredArrayUsingPredicate:fltr];
-    if (onlyStoryBoard.count==1) {
-        NSString *name = [onlyStoryBoard firstObject];
-        NSRange range= [name rangeOfString: @".storyboardc" options: NSBackwardsSearch];
-        NSString *finalName= [name substringToIndex: range.location];
-        return [UIStoryboard storyboardWithName:finalName bundle:[NSBundle mainBundle]];
-    }
-    return nil;
-}
-
-+ (UIViewController *)viewControllerFromStoryBoardWithName:(NSString*)name
-{
-    UIViewController *vc;
-    @try {
-        vc = [[Shortcut mainStoryBoard] instantiateViewControllerWithIdentifier:name];
-    }
-    @catch (NSException *exception) {
-        vc =  nil;
-    }
-    @finally {
-        return vc;
-    }
-    
-}
 
 @end
