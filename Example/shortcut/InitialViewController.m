@@ -6,14 +6,14 @@
 //  Copyright (c) 2014 Chris Chares. All rights reserved.
 //
 
-#import "SCTViewController.h"
+#import "InitialViewController.h"
 #import "Shortcut.h"
 
-@interface SCTViewController ()
+@interface InitialViewController ()
 
 @end
 
-@implementation SCTViewController
+@implementation InitialViewController
 
 - (void)viewDidLoad
 {
@@ -22,6 +22,15 @@
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(secondVC)];
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    NSString *vcString = cell.textLabel.text;
+    openURL(vcString);
+}
+
+
 
 - (void)secondVC {
     openURL(@"testytaco123");

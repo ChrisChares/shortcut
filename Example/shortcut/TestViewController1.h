@@ -11,8 +11,6 @@
 
 @interface TestViewController1 : UIViewController <ShortcutParams>
 
-- (void)setShortcutParams:(NSDictionary *)params;
-
 @property (weak, nonatomic) IBOutlet UITextView *textField;
 
 @end

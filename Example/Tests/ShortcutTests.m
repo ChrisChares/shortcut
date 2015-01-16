@@ -11,7 +11,7 @@
 #import <Expecta/Expecta.h>
 #import "Shortcut.h"
 #import "TestViewController1.h"
-#import "SCTViewController.h"
+#import "InitialViewController.h"
 #import "NSBundle+AppURLScheme.h"
 
 @interface ShortcutTests : XCTestCase

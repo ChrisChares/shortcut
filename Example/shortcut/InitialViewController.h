@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SCTViewController : UIViewController
+@interface InitialViewController : UITableViewController
 - (IBAction)goToNextVC:(id)sender;
 
 @end
