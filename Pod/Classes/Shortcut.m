@@ -29,7 +29,7 @@ static NSString *appURLScheme;
 }
 
 + (BOOL)handleOpenURL:(NSURL *)url navigationHandler:(ShortcutNavigationHandler)navHandler {
-    NSString *viewControllerString = [SCTUtilities viewControllerStringFromURL:url];
+    NSString *viewControllerString = [[SCTUtilities viewControllerStringFromURL:url] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     if ( [Shortcut passesBlackList:viewControllerString] ) {
         UIViewController *vc = [self load:url.absoluteString];
         navHandler(vc);
@@ -44,8 +44,9 @@ static NSString *appURLScheme;
 + (void)openStringURL:(NSString *)urlString {
     NSURL *url = [NSURL URLWithString:urlString];
     if ( url.scheme == nil ) {
-        urlString = [NSString stringWithFormat:@"%@://%@", appURLScheme, urlString];
-        url = [NSURL URLWithString:urlString];
+        //it's a short hand url
+        urlString = [NSString stringWithFormat:@"%@://%@", appURLScheme, [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+        url = [[NSURL alloc] initWithString:urlString];
     }
     [[UIApplication sharedApplication] openURL:url];
 }
