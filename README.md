@@ -7,6 +7,8 @@
 
 Shortcut is an attempt to bring URL-based routing to iOS in the least obtrusive way possible. It allows you to instantiate and present view controllers via string URLs **without configuring routing** and from **outside the app (deep link)**
 
+This is extremely insecure for production apps.  It is only intended for testing.
+
 Let's look at some examples.  
 
     //Create and present PropertyViewController using the default behavior.
