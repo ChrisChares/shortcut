@@ -29,7 +29,9 @@
 		8302ABC41A5E5A07000BABC7 /* TestViewController1.m in Sources */ = {isa = PBXBuildFile; fileRef = 8302ABBF1A5E518D000BABC7 /* TestViewController1.m */; };
 		8302ABCB1A5E65D3000BABC7 /* AppURLSchemeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8302ABCA1A5E65D3000BABC7 /* AppURLSchemeTests.m */; };
 		8302ABD01A5F76C6000BABC7 /* UtilitiesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8302ABCF1A5F76C6000BABC7 /* UtilitiesTest.m */; };
-		83F1C7351A68A8A2006BEF6E /* 🐙.m in Sources */ = {isa = PBXBuildFile; fileRef = 83F1C7341A68A8A2006BEF6E /* 🐙.m */; };
+		83F1C7371A68ADD5006BEF6E /* 🍤.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83F1C7361A68ADD5006BEF6E /* 🍤.xib */; };
+		83F1C7391A68AF56006BEF6E /* 🐙.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83F1C7381A68AF56006BEF6E /* 🐙.xib */; };
+		83F1C73C1A68B1D8006BEF6E /* BlackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83F1C73B1A68B1D8006BEF6E /* BlackViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,8 +76,10 @@
 		8302ABBF1A5E518D000BABC7 /* TestViewController1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController1.m; sourceTree = "<group>"; };
 		8302ABCA1A5E65D3000BABC7 /* AppURLSchemeTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppURLSchemeTests.m; sourceTree = "<group>"; };
 		8302ABCF1A5F76C6000BABC7 /* UtilitiesTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UtilitiesTest.m; sourceTree = "<group>"; };
-		83F1C7331A68A8A2006BEF6E /* 🐙.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "🐙.h"; sourceTree = "<group>"; };
-		83F1C7341A68A8A2006BEF6E /* 🐙.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "🐙.m"; sourceTree = "<group>"; };
+		83F1C7361A68ADD5006BEF6E /* 🍤.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "🍤.xib"; sourceTree = "<group>"; };
+		83F1C7381A68AF56006BEF6E /* 🐙.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "🐙.xib"; sourceTree = "<group>"; };
+		83F1C73A1A68B1D8006BEF6E /* BlackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlackViewController.h; sourceTree = "<group>"; };
+		83F1C73B1A68B1D8006BEF6E /* BlackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlackViewController.m; sourceTree = "<group>"; };
 		8D7D16A7D2CF6864A0CBEF7E /* Pods-shortcut.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shortcut.debug.xcconfig"; path = "Pods/Target Support Files/Pods-shortcut/Pods-shortcut.debug.xcconfig"; sourceTree = "<group>"; };
 		8FC999E5E90767750C535B23 /* libPods-Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F83C0A6792CB33F7D482DE1 /* libPods-shortcut.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-shortcut.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -204,8 +208,6 @@
 				83F1C7321A68A273006BEF6E /* Code */,
 				83F1C7311A68A269006BEF6E /* Storyboard */,
 				83F1C7301A68A25B006BEF6E /* Nibs */,
-				6003F5A5195388D20070C39A /* InitialViewController.h */,
-				6003F5A6195388D20070C39A /* InitialViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -216,6 +218,8 @@
 				8302ABBB1A5E484B000BABC7 /* TestViewController1.xib */,
 				8302ABBE1A5E518D000BABC7 /* TestViewController1.h */,
 				8302ABBF1A5E518D000BABC7 /* TestViewController1.m */,
+				83F1C7361A68ADD5006BEF6E /* 🍤.xib */,
+				83F1C7381A68AF56006BEF6E /* 🐙.xib */,
 			);
 			name = Nibs;
 			sourceTree = "<group>";
@@ -223,6 +227,8 @@
 		83F1C7311A68A269006BEF6E /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
+				6003F5A5195388D20070C39A /* InitialViewController.h */,
+				6003F5A6195388D20070C39A /* InitialViewController.m */,
 			);
 			name = Storyboard;
 			sourceTree = "<group>";
@@ -230,8 +236,8 @@
 		83F1C7321A68A273006BEF6E /* Code */ = {
 			isa = PBXGroup;
 			children = (
-				83F1C7331A68A8A2006BEF6E /* 🐙.h */,
-				83F1C7341A68A8A2006BEF6E /* 🐙.m */,
+				83F1C73A1A68B1D8006BEF6E /* BlackViewController.h */,
+				83F1C73B1A68B1D8006BEF6E /* BlackViewController.m */,
 			);
 			name = Code;
 			sourceTree = "<group>";
@@ -333,6 +339,8 @@
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				6003F5A1195388D20070C39A /* Main_iPhone.storyboard in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
+				83F1C7391A68AF56006BEF6E /* 🐙.xib in Resources */,
+				83F1C7371A68ADD5006BEF6E /* 🍤.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,9 +423,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				6003F59E195388D20070C39A /* SCTAppDelegate.m in Sources */,
+				83F1C73C1A68B1D8006BEF6E /* BlackViewController.m in Sources */,
 				8302ABC01A5E518D000BABC7 /* TestViewController1.m in Sources */,
 				6003F5A7195388D20070C39A /* InitialViewController.m in Sources */,
-				83F1C7351A68A8A2006BEF6E /* 🐙.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

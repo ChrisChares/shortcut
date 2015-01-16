@@ -1,5 +1,5 @@
 //
-//  🐙.h
+//  BlackViewController.h
 //  shortcut
 //
 //  Created by Chris Chares on 1/15/15.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface __ : UIViewController
+@interface BlackViewController : UIViewController
 
 @end

@@ -9,6 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface InitialViewController : UITableViewController
-- (IBAction)goToNextVC:(id)sender;
 
 @end

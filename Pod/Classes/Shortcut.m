@@ -58,6 +58,8 @@ static NSString *appURLScheme;
     NSDictionary *params = [SCTUtilities queryParametersFromURL:url];
     
     id viewController;
+    
+    //first check if a nib exists
     if ( [SCTUtilities nibExists:vcString] ) {
         Class class = NSClassFromString(vcString);
         if ( class == nil ) {
@@ -66,9 +68,10 @@ static NSString *appURLScheme;
         viewController = [[class alloc] initWithNibName:vcString bundle:nil];
     }
     else {
-        //do the storyboard check
+        //then check if it exists in storyboard
         viewController = [SCTUtilities viewControllerFromStoryBoardWithName:vcString];
         
+        //finally check if class exists
         if( !viewController && [SCTUtilities classExists:vcString] ) {
             Class class = NSClassFromString(vcString);
             viewController = [[class alloc] init];

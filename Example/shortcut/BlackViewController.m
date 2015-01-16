@@ -1,22 +1,30 @@
 //
-//  🐙.m
+//  BlackViewController.m
 //  shortcut
 //
 //  Created by Chris Chares on 1/15/15.
 //  Copyright (c) 2015 Chris Chares. All rights reserved.
 //
 
-#import "🐙.h"
+#import "BlackViewController.h"
 
-@interface __ ()
+@interface BlackViewController ()
 
 @end
 
-@implementation __
+@implementation BlackViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.view.backgroundColor = UIColor.blackColor;
+    self.title = @"BlackViewController.h";
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 200)];
+    label.text = @".h";
+    label.font = [UIFont boldSystemFontOfSize:72];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.center = self.view.center;
+    label.textColor = UIColor.whiteColor;
+    [self.view addSubview:label];
 }
 
 - (void)didReceiveMemoryWarning {
