@@ -20,8 +20,8 @@ Let's look at some examples.
     appScheme://PropertyViewController?id=wka92j9a8s
     
     //Load the same view controller without presenting it.
-    //These methods work with view controllers defined in .xib files and pure code as well as the the main 
-    //storyboard for the current device
+    //These methods work with view controllers defined in .xib files and pure code as 
+    //well as the the main storyboard for the current device type
     UIViewController *vc = [Shortcut load:@"PropertyViewController?id=wka92j9a8s];
     
 ## Getting Started
@@ -57,9 +57,9 @@ If you have view controllers you would not like Shortcut to instantiate, create 
 
 By inspecting your bundle.  It searches for the named view controller in this order:
 
-+ For a nib with matching name
-+ In the main storyboard for a matching identifier
-+ For a class with matching name
++ xib/nib names
++ main storyboard identifiers
++ class names
 
 Once it has found your view controller it uses the standard iOS URL opening behavior.  In fact:
 
@@ -79,6 +79,7 @@ Some key needs:
 + Caching (decision trees and storyboards?)
 + Less expensive way to check storyboard for identifier
 + Typed parameters ( NSNumber to start )
++ Black list pattern matching
 + Benchmarks
 
 ## Installation
@@ -91,8 +92,8 @@ Not yet, but soon:
 
 ## Authors
 
-+ the_meatloaf
-+ chrischares
++ [themeatloaf](https://github.com/themeatloaf)
++ [chrischares](https://github.com/ChrisChares)
 
 ## License
 
